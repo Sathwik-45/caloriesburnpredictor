@@ -118,19 +118,22 @@ function App() {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:5000/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          age: Number(form.age),
-          weight: Number(form.weight),
-          duration: Number(form.duration),
-          steps: Number(form.steps),
-          heart_rate: Number(form.heart_rate),
-          sleep: Number(form.sleep),
-          daily_calories: Number(form.daily_calories),
-        }),
-      });
+      const response = await fetch(
+        "https://caloriesburnpredictor-m450.onrender.com/predict",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            age: Number(form.age),
+            weight: Number(form.weight),
+            duration: Number(form.duration),
+            steps: Number(form.steps),
+            heart_rate: Number(form.heart_rate),
+            sleep: Number(form.sleep),
+            daily_calories: Number(form.daily_calories),
+          }),
+        }
+      );
 
       if (!response.ok) throw new Error("Server error");
 
